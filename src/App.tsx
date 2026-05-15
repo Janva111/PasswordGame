@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import PasswordInput from './PasswordInput.tsx';
-import PasswordGame from './PasswordGame.tsx'; // Importujeme novou herní komponentu
+import PasswordGame from './PasswordGame.tsx';
 import CharacterSequenceValidator from './CharacterSequenceValidator.tsx';
 import PasswordTimeValidator from './PasswordTimeValidator.tsx';
 import './App.css';
@@ -25,6 +25,7 @@ const App: React.FC = () => {
     const handleSequence = useCallback((data: SequenceResult) => setSequenceData(data), []);
     const handleTime = useCallback((data: TimeResult) => setTimeData(data), []);
 
+
     return (
         <div className="app-container">
             <h1>The Password Game</h1>
@@ -36,6 +37,7 @@ const App: React.FC = () => {
 
             <PasswordGame
                 password={password}
+                setPassword={setPassword}
                 sequenceData={sequenceData}
                 timeData={timeData}
             />
