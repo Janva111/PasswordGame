@@ -27,7 +27,7 @@ const PasswordStrength: React.FC<Props> = ({
     const [selectedCountry, setSelectedCountry] = useState("");
 
     const handleCountryValidation = useCallback((isValid: boolean, countryCode: string) => {
-        i
+
         setSelectedCountry(countryCode);
     }, []);
 
