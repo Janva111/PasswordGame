@@ -17,8 +17,7 @@
         password: string;
         setPassword: React.Dispatch<React.SetStateAction<string>>;
         sequenceData: SequenceResult;
-        timeData: TimeResult;
-        selectedCountry: string
+        timeData: TimeResult
     }
 
     const PasswordGame: React.FC<Props> = ({ password, sequenceData, timeData }) =>
@@ -76,8 +75,8 @@
                     password={password}
                     sequenceData={sequenceData}
                     timeData={timeData}
-                    selectedCountry={selectedCountry}
                     isCountryValid={isCountryValid}
+                    selectedCountry={selectedCountry}
                 />
             </div>
         );
