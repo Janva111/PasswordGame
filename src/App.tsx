@@ -37,7 +37,7 @@ const App: React.FC = () => {
             return prevPassword.slice(0, index) + prevPassword.slice(index + 1);
         }
         });
-    }, 10000);
+    }, 120000);
     return () => clearInterval(sabotageInterval);
     }, []);
 
