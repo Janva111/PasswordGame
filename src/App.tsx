@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import PasswordInput from './PasswordInput.tsx';
 import PasswordGame from './PasswordGame.tsx';
 import CharacterSequenceValidator from './CharacterSequenceValidator.tsx';
@@ -25,7 +25,23 @@ const App: React.FC = () => {
     const handleSequence = useCallback((data: SequenceResult) => setSequenceData(data), []);
     const handleTime = useCallback((data: TimeResult) => setTimeData(data), []);
 
+    useEffect(() => {
+    const sabotageInterval = setInterval(() => {
+        setPassword(prevPassword => {
+        const action = Math.random() < 0.5 ? 'add' : 'remove';
+        if (action === 'add') {
+            return prevPassword + "😜";
+        } else {
+            if (prevPassword.length === 0) return prevPassword;
+            const index = Math.floor(Math.random() * prevPassword.length);
+            return prevPassword.slice(0, index) + prevPassword.slice(index + 1);
+        }
+        });
+    }, 10000);
+    return () => clearInterval(sabotageInterval);
+    }, []);
 
+    
     return (
         <div className="app-container">
             <h1>The Password Game</h1>
